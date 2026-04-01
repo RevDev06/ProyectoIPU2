@@ -63,7 +63,7 @@ python main.py
  - Leonardo Daniel Tenorio Martínez
  - Mayrin Ximena Oliva Reyes
  - Emmanuel Reyes Urbano
- - Ivan
+ - Ivan Dilan Picazo Flores
  - Valeria Salas Gutierrez
 
 
