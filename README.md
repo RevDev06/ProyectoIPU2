@@ -1,50 +1,73 @@
-# ProyectoIPU2
+#  Sistema de Gestión de Nómina - Aceros Industrializados S.A. de C.V.
 
-Proyecto desarrollado para la materia de **Ingeniería de Proyectos de Unidad (IPU)**, segunda entrega.
+![Python](https://img.shields.io/badge/Python-3.x-blue?style=flat&logo=python)
+![Estado](https://img.shields.io/badge/Estado-Proyecto_Unidad_2-success)
 
-## 📋 Descripción
+Este proyecto es una aplicación de consola desarrollada en **Python** para gestionar y calcular la nómina de los empleados de la empresa ficticia *Aceros Industrializados S.A. de C.V.* El sistema utiliza el manejo de **arreglos** (listas) para el almacenamiento temporal y la manipulación de la información de los trabajadores.
 
-![Descripción del proyecto - parte 1](https://github.com/user-attachments/assets/80fd8ca0-2cda-479b-afb7-3b17f397abef)
+##  Características Principales
 
-![Descripción del proyecto - parte 2](https://github.com/user-attachments/assets/90103082-9a2a-487e-ae1e-5061ca86deee)
+El programa cuenta con un menú interactivo que permite realizar las siguientes operaciones:
 
-![Descripción del proyecto - parte 3](https://github.com/user-attachments/assets/56253dce-4705-4e13-9e7e-a7ba5fd8c6c8)
+1. **Modificar información**: Permite buscar a un trabajador por su "No. de Trabajador" y actualizar de manera individual cualquiera de sus datos mediante un submenú.
+2. **Calcula sueldos**: Procesa la información de todos los empleados en el arreglo y calcula su sueldo final utilizando la fórmula establecida.
+3. **Despliega sueldos**: Muestra una tabla general con toda la información de los trabajadores, incluyendo el cálculo final de su salario.
+4. **Sueldos por Departamentos**: Genera un reporte con el monto total a pagar en sueldos agrupado por los departamentos de la empresa (*Compras, Dirección, Producción, Recursos Humanos, Ventas*).
+5. **Sueldos por tipo de Empleado**: Genera un reporte con el monto total a pagar agrupado por el tipo de contrato (*Obrero, Empleado, Directivo*).
+6. **Sueldos, Horas Extra y Bonos (Alcance 2.A)**: Muestra el desglose financiero total de la empresa, separando los montos correspondientes a Sueldos Base, Horas Extra y Bonos de Producción.
+7. **Salir**: Termina la ejecución del programa de manera segura.
 
-## 🎯 Objetivos
+##  Fórmula de Cálculo
 
-- Aplicar los fundamentos de ingeniería de software en un proyecto real.
-- Implementar las metodologías y técnicas aprendidas durante el curso.
-- Desarrollar habilidades de trabajo colaborativo y control de versiones con Git.
+El sistema calcula el salario de cada empleado utilizando la siguiente fórmula matemática:
 
-## 🛠️ Tecnologías
+Sueldo = (Días Trabajados * Pago Diario) + (Horas Extra * Pago por Hora Extra) + Bono Productividad
+ Estructura de Datos
+El programa gestiona los siguientes campos para cada trabajador:
 
-- Git / GitHub
-- Documentación en Markdown
+No. de Trabajador (Identificador único)
 
-## 📁 Estructura del Proyecto
+Nombre
 
-```
-ProyectoIPU2/
-├── README.md       # Documentación principal del proyecto
-└── readme          # Archivo inicial del proyecto
-```
+Departamento
 
-## 🚀 Cómo usar este proyecto
+Tipo de Empleado
 
-1. Clonar el repositorio:
-   ```bash
-   git clone https://github.com/RevDev06/ProyectoIPU2.git
-   ```
-2. Acceder al directorio del proyecto:
-   ```bash
-   cd ProyectoIPU2
-   ```
+Días Trabajados
 
-## 👤 Autor
+Pago Diario
 
-**Daniel Tenorio**
-- GitHub: [@RevDev06](https://github.com/RevDev06)
+Horas Extra
 
-## 📄 Licencia
+Pago por Hora Extra
 
-Este proyecto es de uso académico.
+Bono Productividad
+
+ Validaciones y Seguridad
+El sistema incluye validaciones exhaustivas para manejar contingencias. Esto asegura que el programa no colapse ante entradas de datos incorrectas por parte del usuario (por ejemplo, ingresar letras cuando se esperan números, o seleccionar opciones de menú inexistentes).
+
+ Instrucciones de Uso
+Asegúrate de tener Python 3.14 instalado en tu sistema.
+
+Clona este repositorio o descarga el archivo principal .py.
+
+Abre una terminal o línea de comandos en el directorio del archivo.
+
+Ejecuta el programa con el siguiente comando:
+
+Bash
+python main.py
+(Sustituye main.py por el nombre real de tu archivo).
+
+👨‍💻 Autores
+ - Leonardo Daniel Tenorio Martínez
+ - Mayrin Ximena Oliva Reyes
+ - Emmanuel Reyes Urbano
+ - Ivan
+ - Valeria Salas Gutierrez
+
+
+
+
+***
+
