@@ -4,7 +4,11 @@ Proyecto desarrollado para la materia de **Ingeniería de Proyectos de Unidad (I
 
 ## 📋 Descripción
 
-Este repositorio contiene el desarrollo del Proyecto IPU 2, el cual tiene como objetivo aplicar los conceptos y metodologías vistas durante el curso, integrando buenas prácticas de desarrollo de software y gestión de proyectos.
+![Descripción del proyecto - parte 1](https://github.com/user-attachments/assets/80fd8ca0-2cda-479b-afb7-3b17f397abef)
+
+![Descripción del proyecto - parte 2](https://github.com/user-attachments/assets/90103082-9a2a-487e-ae1e-5061ca86deee)
+
+![Descripción del proyecto - parte 3](https://github.com/user-attachments/assets/56253dce-4705-4e13-9e7e-a7ba5fd8c6c8)
 
 ## 🎯 Objetivos
 
