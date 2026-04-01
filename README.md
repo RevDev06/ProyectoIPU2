@@ -1,7 +1,7 @@
 #  Sistema de Gestión de Nómina - Aceros Industrializados S.A. de C.V.
 
-![Python](https://img.shields.io/badge/Python-3.x-blue?style=flat&logo=python)
-![Estado](https://img.shields.io/badge/Estado-Proyecto_Unidad_2-success)
+![Python](https://img.shields.io/badge/Python-3.14-blue?style=flat&logo=python)
+
 
 Este proyecto es una aplicación de consola desarrollada en **Python** para gestionar y calcular la nómina de los empleados de la empresa ficticia *Aceros Industrializados S.A. de C.V.* El sistema utiliza el manejo de **arreglos** (listas) para el almacenamiento temporal y la manipulación de la información de los trabajadores.
 
