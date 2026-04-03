@@ -59,7 +59,7 @@ Bash
 python main.py
 (Sustituye main.py por el nombre real de tu archivo).
 
-👨‍💻 Autores
+Autores
  - Leonardo Daniel Tenorio Martínez
  - Mayrin Ximena Oliva Reyes
  - Emmanuel Reyes Urbano
