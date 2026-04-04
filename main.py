@@ -1,6 +1,35 @@
 import os
 import time 
 
+# [ID, Nombre, Depto, Tipo, Dias, PagoD, He, PagoHe, Bono, SueldoTotal]
+empleados=[
+    [100, "Jose Perez Ramos", "Produccion", "Obrero", 7, 825, 9, 200, 0, 0],
+    [110, "Pablo Ramirez Ruiz", "Produccion", "Obrero", 7, 825, 10, 200, 0, 0],
+    [130, "Ma. Luz Aguilar Hernandez", "Produccion", "Obrero", 7, 825, 12, 200, 0, 0],
+    [135, "Roberto Haro Torres", "Ventas", "Empleado", 15, 955, 10, 250, 0, 0],
+    [143, "Rosa Lopez Juarez", "Ventas", "Empleado", 15, 955, 4, 250, 0, 0],
+    [150, "Ramon Martinez Suarez", "Ventas", "Empleado", 15, 955, 9, 250, 0, 0],
+    [163, "Santiago Alonso Contreras", "Compras", "Empleado", 15, 955, 11, 250, 0, 0],
+    [174, "Jesus Campos Sanchez", "Compras", "Empleado", 15, 955, 11, 250, 0, 0],
+    [183, "Moises Castro Montante", "Compras", "Empleado", 15, 955, 0, 250, 0, 0],
+    [192, "Pablo Cervantes Salinas", "Recursos Humanos", "Empleado", 15, 955, 6, 250, 0, 0],
+    [203, "Anahi Torres Carreon", "Recursos Humanos", "Empleado", 15, 955, 3, 250, 0, 0],
+    [213, "Nuria Lira Gonzalez", "Recursos Humanos", "Empleado", 15, 955, 0, 250, 0, 0],
+    [226, "Miguel Mendoza Sanchez", "Produccion", "Obrero", 7, 825, 1, 200, 0, 0],
+    [234, "Sofia Gonzalez Esparza", "Direccion", "Directivo", 15, 2000, 0, 0, 800, 0],
+    [241, "Cristian Gonzalez Gonzalez", "Produccion", "Obrero", 7, 825, 6, 200, 0, 0],
+    [255, "Juan Gamez Aguilar", "Ventas", "Empleado", 15, 955, 8, 250, 0, 0],
+    [261, "Fernando Lopez Nuño", "Direccion", "Directivo", 15, 1200, 1, 250, 0, 0],
+    [274, "Abraham Lozano De Lira", "Compras", "Empleado", 15, 955, 8, 250, 0, 0],
+    [283, "Angel Negrete Demetrio", "Ventas", "Empleado", 15, 955, 1, 250, 0, 0],
+    [294, "Damian Nieves Quezada", "Recursos Humanos", "Empleado", 15, 955, 10, 250, 0, 0],
+    [307, "Armando Reyes Martinez", "Compras", "Empleado", 15, 955, 8, 250, 0, 0],
+    [318, "Manuel Ruiz Mendoza", "Ventas", "Empleado", 15, 955, 3, 250, 0, 0],
+    [326, "Esteban Salado Muñoz", "Direccion", "Directivo", 15, 1500, 0, 0, 1000, 0],
+    [331, "Alejandro Soto Ocampo", "Direccion", "Directivo", 15, 1200, 0, 0, 1200, 0],
+    [337, "Alondra Valdes Mora", "Direccion", "Directivo", 15, 1200, 0, 0, 2000, 0]
+]
+
 def limpiar_pantalla():
     os.system('cls')
 
@@ -31,34 +60,6 @@ def leer_cadena(mensaje):
         else:
             print("\n[!] Error: Entrada inválida. Ingresa solo letras (sin números ni símbolos especiales).")
 
-# [ID, Nombre, Depto, Tipo, Dias, PagoD, He, PagoHe, Bono, SueldoTotal]
-empleados=[
-    [100, "Jose Perez Ramos", "Produccion", "Obrero", 7, 825, 9, 200, 0, 0],
-    [110, "Pablo Ramirez Ruiz", "Produccion", "Obrero", 7, 825, 10, 200, 0, 0],
-    [130, "Ma. Luz Aguilar Hernandez", "Produccion", "Obrero", 7, 825, 12, 200, 0, 0],
-    [135, "Roberto Haro Torres", "Ventas", "Empleado", 15, 955, 10, 250, 0, 0],
-    [143, "Rosa Lopez Juarez", "Ventas", "Empleado", 15, 955, 4, 250, 0, 0],
-    [150, "Ramon Martinez Suarez", "Ventas", "Empleado", 15, 955, 9, 250, 0, 0],
-    [163, "Santiago Alonso Contreras", "Compras", "Empleado", 15, 955, 11, 250, 0, 0],
-    [174, "Jesus Campos Sanchez", "Compras", "Empleado", 15, 955, 11, 250, 0, 0],
-    [183, "Moises Castro Montante", "Compras", "Empleado", 15, 955, 0, 250, 0, 0],
-    [192, "Pablo Cervantes Salinas", "Recursos Humanos", "Empleado", 15, 955, 6, 250, 0, 0],
-    [203, "Anahi Torres Carreon", "Recursos Humanos", "Empleado", 15, 955, 3, 250, 0, 0],
-    [213, "Nuria Lira Gonzalez", "Recursos Humanos", "Empleado", 15, 955, 0, 250, 0, 0],
-    [226, "Miguel Mendoza Sanchez", "Produccion", "Obrero", 7, 825, 1, 200, 0, 0],
-    [234, "Sofia Gonzalez Esparza", "Direccion", "Directivo", 15, 2000, 0, 0, 800, 0],
-    [241, "Cristian Gonzalez Gonzalez", "Produccion", "Obrero", 7, 825, 6, 200, 0, 0],
-    [255, "Juan Gamez Aguilar", "Ventas", "Empleado", 15, 955, 8, 250, 0, 0],
-    [261, "Fernando Lopez Nuño", "Direccion", "Directivo", 15, 1200, 1, 250, 0, 0],
-    [274, "Abraham Lozano De Lira", "Compras", "Empleado", 15, 955, 8, 250, 0, 0],
-    [283, "Angel Negrete Demetrio", "Ventas", "Empleado", 15, 955, 1, 250, 0, 0],
-    [294, "Damian Nieves Quezada", "Recursos Humanos", "Empleado", 15, 955, 10, 250, 0, 0],
-    [307, "Armando Reyes Martinez", "Compras", "Empleado", 15, 955, 8, 250, 0, 0],
-    [318, "Manuel Ruiz Mendoza", "Ventas", "Empleado", 15, 955, 3, 250, 0, 0],
-    [326, "Esteban Salado Muñoz", "Direccion", "Directivo", 15, 1500, 0, 0, 1000, 0],
-    [331, "Alejandro Soto Ocampo", "Direccion", "Directivo", 15, 1200, 0, 0, 1200, 0],
-    [337, "Alondra Valdes Mora", "Direccion", "Directivo", 15, 1200, 0, 0, 2000, 0]
-]
 
 def imprimir_tabla(matriz):
     print("\n" + "="*110)
