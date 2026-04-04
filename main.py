@@ -99,3 +99,18 @@ def reporte_departamentos(matriz):
     print(f"{"Direccion":<25} | ${d_total:>14f}")
     print("-" * 45 + "\n")
 
+def modificar_info(empleados):
+    # Aquí irá la lógica para modificar la información de un empleado
+    return
+
+def calcular_sueldos(empleados):
+    # Aquí irá la lógica para calcular los sueldos de los empleados
+    return
+
+def reporte_tipo_empleado(empleados):
+    # Aquí irá la lógica para generar el reporte por tipo de empleado
+    return
+
+def reporte_nomina(empleados):
+    # Aquí irá la lógica para generar el reporte de nómina total
+    return
