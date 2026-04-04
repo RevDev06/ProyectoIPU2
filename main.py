@@ -1,3 +1,36 @@
+import os
+import time 
+
+def limpiar_pantalla():
+    os.system('cls')
+
+def leer_entero(mensaje):
+    while True:
+        valor = input(mensaje)
+        if valor.isdigit():
+            return int(valor)
+        else: 
+            print("\n[!] Error: Entrada inválida. Por favor, ingresa un número entero.")
+
+def leer_flotante(mensaje):
+    while True:
+        valor = input(mensaje)
+        if valor.replace('.', '', 1).isdigit():
+            return float(valor)
+        else:
+            print("\n[!] Error: Entrada inválida. Por favor, ingresa un número válido.")
+
+def leer_cadena(mensaje):
+    while True:
+        valor = input(mensaje).strip()
+        if not valor:
+            print("\n[!] Error: No puedes dejar este campo en blanco.")
+            continue  
+        if valor.replace(" ", "").isalpha():
+            return valor  
+        else:
+            print("\n[!] Error: Entrada inválida. Ingresa solo letras (sin números ni símbolos especiales).")
+
 # [ID, Nombre, Depto, Tipo, Dias, PagoD, He, PagoHe, Bono, SueldoTotal]
 empleados=[
     [100, "Jose Perez Ramos", "Produccion", "Obrero", 7, 825, 9, 200, 0, 0],
@@ -66,5 +99,3 @@ def reporte_departamentos(matriz):
     print(f"{"Direccion":<25} | ${d_total:>14f}")
     print("-" * 45 + "\n")
 
-imprimir_tabla(empleados)
-reporte_departamentos(empleados)
