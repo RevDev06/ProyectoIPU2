@@ -138,5 +138,38 @@ def menu_principal():
 
 
 
+while True:
+    menu_principal()
+    opcion = leer_entero("Selecciona una opción (1-7): ")
+    if opcion == 1:
+        limpiar_pantalla()
+        modificar_info(empleados)
+        input("Presiona Enter para continuar...")
+    elif opcion == 2:
+        limpiar_pantalla()
+        calcular_sueldos(empleados)
+        input("Presiona Enter para continuar...")
+    elif opcion == 3:
+        limpiar_pantalla()
+        imprimir_tabla(empleados)
+        input("Presiona Enter para continuar...")
+    elif opcion == 4:
+        limpiar_pantalla()
+        reporte_departamentos(empleados)
+        input("Presiona Enter para continuar...")
+    elif opcion == 5:
+        limpiar_pantalla()
+        reporte_tipo_empleado(empleados)
+        input("Presiona Enter para continuar...")
+    elif opcion == 6:
+        limpiar_pantalla()
+        reporte_nomina(empleados)
+        input("Presiona Enter para continuar...")
+    elif opcion == 7:
+        limpiar_pantalla()
+        print("\nCerrando el sistema. ¡Hasta luego!")
+        time.sleep(2)
+        limpiar_pantalla()
+        break
 
 
