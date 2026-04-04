@@ -114,3 +114,29 @@ def reporte_tipo_empleado(empleados):
 def reporte_nomina(empleados):
     # Aquí irá la lógica para generar el reporte de nómina total
     return
+
+
+def menu_principal():
+    limpiar_pantalla()
+
+    print("\n" + "="*50)
+    print("  SISTEMA DE NÓMINA - ACEROS INDUSTRIALIZADOS")
+    print("="*50)
+    print("  --- OPERACIONES ---")
+    print("  1. Modificar información")
+    print("  2. Calcular sueldos")
+    print("  3. Desplegar sueldos\n")
+
+    print("  --- REPORTES ESTADÍSTICOS ---")
+    print("  4. Sueldos por Departamentos")
+    print("  5. Sueldos por tipo de Empleado")
+    print("  6. Sueldos, Horas Extra y Bonos\n")
+
+    print("  --- SISTEMA ---")
+    print("  7. Salir")
+    print("="*50)
+
+
+
+
+
