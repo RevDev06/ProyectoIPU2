@@ -109,11 +109,39 @@ def calcular_sueldos(empleados):
     return
 
 def reporte_tipo_empleado(empleados):
-    # Aquí irá la lógica para generar el reporte por tipo de empleado
+    o_total=0
+    e_total=0
+    d_total=0
+    for emp in empleados:
+        tipo_emp=emp[3]
+        if tipo_emp=="Obrero":
+            o_total+=((emp[4]*emp[5])+(emp[6]*emp[7])+emp[8])
+        elif tipo_emp=="Empleado":
+            e_total+=((emp[4]*emp[5])+(emp[6]*emp[7])+emp[8])
+        elif tipo_emp=="Directivo":
+            d_total+=((emp[4]*emp[5])+(emp[6]*emp[7])+emp[8])
+    print("--- Sueldos por tipo de empleado ---")
+    print("-" * 45)
+    print(f"{"Tipo de Empleado":<25} | {"Total":>15}")
+    print("-" * 45)    
+    print(f"{"Obrero":<25} | ${o_total:>14.3f}")
+    print(f"{"Empleado":<25} | ${e_total:>14.3f}")
+    print(f"{"Directivo":<25} | ${d_total:>14.3f}")
+    print("-" * 45 + "\n")
     return
 
 def reporte_nomina(empleados):
-    # Aquí irá la lógica para generar el reporte de nómina total
+    total_nomina = sum((emp[4]*emp[5]) + (emp[6]*emp[7]) + emp[8] for emp in empleados)
+    th_extras = sum(emp[6]*emp[7] for emp in empleados)
+    bonos = sum(emp[8] for emp in empleados)
+    print("---  Reporte de Nómina Total ---")
+    print("-" * 45)
+    print(f"{"Tipo":<25} | {"Total":>15}")
+    print("-" * 45)
+    print(f"{"Total de Nómina:":<25} | ${total_nomina:>14.3f}")
+    print(f"{"Total de Horas Extra:":<25} | ${th_extras:>14.3f}")
+    print(f"{"Total de Bonos:":<25} | ${bonos:>14.3f}")
+    print("-" * 45 + "\n")
     return
 
 
