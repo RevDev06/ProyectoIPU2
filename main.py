@@ -189,7 +189,7 @@ while True:
         input("Presiona culaquier tecla para continuar...")
     elif opcion == 3:
         limpiar_pantalla()
-        imprimir_tabla(empleados)
+        desplegar_sueldos(empleados)
         input("Presiona culaquier tecla para continuar...")
     elif opcion == 4:
         limpiar_pantalla()
