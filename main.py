@@ -1,6 +1,5 @@
 import os
 import time 
-
 # [ID, Nombre, Depto, Tipo, Dias, PagoD, He, PagoHe, Bono, SueldoTotal]
 empleados=[
     [100, "Jose Perez Ramos", "Produccion", "Obrero", 7, 825, 9, 200, 0, 0],
@@ -105,9 +104,19 @@ def modificar_info(empleados):
     return
 
 def calcular_sueldos(empleados):
-    # Aquí irá la lógica para calcular los sueldos de los empleados
-    return
+    for emp in empleados:
+        sueldo_total = (emp[4]*emp[5])+(emp[6]*emp[7])+emp[8]
+        emp[9] = sueldo_total
+        
+def desplegar_sueldos(empleados):
+    print("\n" + "="*110)
+    print(f"{"ID":<5} | {"NOMBRE":<28} | {"DEPTO":<18} | {"DIAS":<5} | {"PAGO D.":<8} | {"HE":<3} | {"P.HE":<6} | {"BONO":<6} | {"SUELDO TOTAL":<12}")
+    print("-" * 110)
+    for emp in empleados:
+        print(f"{emp[0]:<5} | {emp[1]:<28} | {emp[2]:<18} | {emp[4]:<5} | {emp[5]:<8} | {emp[6]:<3} | {emp[7]:<6} | {emp[8]:<6} | ${emp[9]:<11.2f}")
 
+    print("="*110 + "\n")
+    
 def reporte_tipo_empleado(empleados):
     o_total=0
     e_total=0
