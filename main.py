@@ -93,11 +93,11 @@ def reporte_departamentos(matriz):
     print("--- Sueldos por departamento ---")
     print(f"{"Departamento":<25} | {"Total":>15}")
     print("-" * 45)
-    print(f"{"Produccion":<25} | ${p_total:>14f}")
-    print(f"{"Ventas":<25} | ${v_total:>14f}")
-    print(f"{"Compras":<25} | ${c_total:>14f}")
-    print(f"{"Recursos humanos":<25} | ${r_total:>14f}")
-    print(f"{"Direccion":<25} | ${d_total:>14f}")
+    print(f"{"Produccion":<25} | ${p_total:>14.2f}")
+    print(f"{"Ventas":<25} | ${v_total:>14.2f}")
+    print(f"{"Compras":<25} | ${c_total:>14.2f}")
+    print(f"{"Recursos humanos":<25} | ${r_total:>14.2f}")
+    print(f"{"Direccion":<25} | ${d_total:>14.2f}")
     print("-" * 45 + "\n")
 
 def modificar_info(empleados):
