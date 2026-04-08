@@ -60,22 +60,22 @@ def leer_cadena(mensaje):
             print("\n[!] Error: Entrada inválida. Ingresa solo letras (sin números ni símbolos especiales).")
 
 
-def imprimir_tabla(matriz):
+def imprimir_tabla(empleados):
     print("\n" + "="*110)
     print(f"{"ID":<5} | {"NOMBRE":<28} | {"DEPTO":<18} | {"DIAS":<5} | {"PAGO D.":<8} | {"HE":<3} | {"P.HE":<6} | {"BONO":<6}")
     print("-" * 110)
-    for emp in matriz:
+    for emp in empleados:
         print(f"{emp[0]:<5} | {emp[1]:<28} | {emp[2]:<18} | {emp[4]:<5} | {emp[5]:<8} | {emp[6]:<3} | {emp[7]:<6} | {emp[8]:<6}")
 
     print("="*110 + "\n")
 
-def reporte_departamentos(matriz):
+def reporte_departamentos(empleados):
     p_total=0
     v_total=0
     c_total=0
     r_total=0
     d_total=0
-    for emp in matriz:
+    for emp in empleados:
         sueldo_emp=(emp[4]*emp[5])+(emp[6]*emp[7])+emp[8]
         depto=emp[2]
         if depto=="Produccion":
