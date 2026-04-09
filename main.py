@@ -35,7 +35,7 @@ def limpiar_pantalla():
 
 def leer_entero(mensaje):
     while True:
-        valor = input(mensaje)
+        valor = input(mensaje).strip()
         if valor.isdigit():
             return int(valor)
         else: 
@@ -43,11 +43,11 @@ def leer_entero(mensaje):
 
 def leer_flotante(mensaje):
     while True:
-        valor = input(mensaje)
-        if valor.replace('.', '', 1).isdigit():
+        valor = input(mensaje).strip()
+        if valor.replace('.', '', 1).isdigit() and valor != ".":
             return float(valor)
         else:
-            print("\n[!] Error: Entrada inválida. Por favor, ingresa un número válido.")
+            print("\n[!] Error: Entrada inválida. Ingresa un número válido (ej: 250 o 250.50).")
 
 def leer_cadena(mensaje):
     while True:
@@ -55,8 +55,9 @@ def leer_cadena(mensaje):
         if not valor:
             print("\n[!] Error: No puedes dejar este campo en blanco.")
             continue  
+            
         if valor.replace(" ", "").isalpha():
-            return valor  
+            return valor.title()  
         else:
             print("\n[!] Error: Entrada inválida. Ingresa solo letras (sin números ni símbolos especiales).")
 
