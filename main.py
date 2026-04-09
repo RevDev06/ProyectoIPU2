@@ -31,7 +31,7 @@ empleados=[
 ]
 
 def limpiar_pantalla():
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system('cls')
 
 def leer_entero(mensaje):
     while True:
@@ -70,37 +70,53 @@ def imprimir_tabla(empleados):
         print(f"{emp[0]:<4} | {emp[1]:<26} | {emp[2]:<17} | {emp[4]:<4} | {emp[5]:<7} | {emp[6]:<3} | {emp[7]:<5} | {emp[8]:<5}")
     print("=" * 105 + "\n")
 
-def reporte_departamentos(empleados):
-    p_total=0
-    v_total=0
-    c_total=0
-    r_total=0
-    d_total=0
-    for emp in empleados:
-        sueldo_emp=(emp[4]*emp[5])+(emp[6]*emp[7])+emp[8]
-        depto=emp[2]
-        if depto=="Produccion":
-            p_total+=sueldo_emp
-        elif depto=="Ventas":
-            v_total+=sueldo_emp
-        elif depto=="Compras":
-            c_total+=sueldo_emp
-        elif depto=="Recursos Humanos":
-            r_total+=sueldo_emp
-        elif depto=="Direccion": 
-            d_total+=sueldo_emp
 
-    print("\n==================================================")
-    print("--- SUELDOS POR DEPARTAMENTO ---")
-    print("==================================================")
-    print(f"{'Departamento':<25} {'Total':<15}")
-    print("--------------------------------------------------")
-    print(f"{'Produccion':<25} ${p_total:>14.2f}")
-    print(f"{'Ventas':<25} ${v_total:>14.2f}")
-    print(f"{'Compras':<25} ${c_total:>14.2f}")
-    print(f"{'Recursos humanos':<25} ${r_total:>14.2f}")
-    print(f"{'Direccion':<25} ${d_total:>14.2f}")
-    print("==================================================\n")
+def menu_principal():
+    limpiar_pantalla()
+
+    print("\n" + "=" * 50 + "\n" +
+    f"{'SISTEMA DE NÓMINA - ACEROS INDUSTRIALIZADOS':^50}" +
+    f"\n" + "=" * 50 + "\n" * 2 +
+    f"{'OPERACIONES':-^50}" + "\n" +
+    f"1. Modificar información" + "\n" +
+    f"2. Calcular sueldos" + "\n" +
+    f"3. Desplegar sueldos" + "\n" + "\n" +
+
+    f"{'REPORTES ESTADÍSTICOS':-^50}" + "\n" +
+    f"4. Sueldos por Departamentos" + "\n" +
+    f"5. Sueldos por tipo de Empleado" + "\n" +
+    f"6. Sueldos, Horas Extra y Bonos" + "\n"*2 +
+    f"{'SISTEMA':-^50}" + "\n" +
+    f"7. Salir" + "\n" +
+    f"=" * 50 + "\n")
+
+
+def desplegar_tabla(empleados):
+    print("\n" + "=" * 110)
+    print(f"{'ID':<4} | {'NOMBRE':<26} | {'DEPTO':<17} | {'DIAS':<4} | {'PAGO D.':<7} | {'HE':<3} | {'P.HE':<5} | {'BONO':<5} | {'SUELDO TOTAL'}")
+    print("-" * 110)
+    for emp in empleados:
+        print(f"{emp[0]:<4} | {emp[1]:<26} | {emp[2]:<17} | {emp[4]:<4} | {emp[5]:<7} | {emp[6]:<3} | {emp[7]:<5} | {emp[8]:<5} | ${emp[9]:.2f}")
+    print("=" * 110 + "\n")
+
+
+def desplegar_datos_empleado(num):
+    for emp in empleados:
+        if emp[0] == num:
+            print("\n" + "=" * 105)
+            print(f"{'ID':<4} | {'NOMBRE':<26} | {'DEPTO':<17} | {'DIAS':<4} | {'PAGO D.':<7} | {'HE':<3} | {'P.HE':<5} | {'BONO':<5}")
+            print("-" * 105)
+            print(f"{emp[0]:<4} | {emp[1]:<26} | {emp[2]:<17} | {emp[4]:<4} | {emp[5]:<7} | {emp[6]:<3} | {emp[7]:<5} | {emp[8]:<5}")
+            print("=" * 105 + "\n")
+
+
+def calcular_sueldos(empleados):
+    for emp in empleados:
+        sueldo_total = (emp[4]*emp[5])+(emp[6]*emp[7])+emp[8]
+        emp[9] = sueldo_total
+    print("Se ha realizado el cálculo de los sueldos")
+        
+
 
 def buscar_empleado(empleados, numero):
     i=0
@@ -109,6 +125,7 @@ def buscar_empleado(empleados, numero):
             return i
         i=i+1
     return -1
+
 
 def modificar(empleados):
     desplegar_tabla(empleados)
@@ -165,29 +182,40 @@ def modificar(empleados):
         else:
             print("Opción no válida, intente de nuevo.")
 
-def desplegar_datos_empleado(num):
-    for emp in empleados:
-        if emp[0] == num:
-            print("\n" + "=" * 105)
-            print(f"{'ID':<4} | {'NOMBRE':<26} | {'DEPTO':<17} | {'DIAS':<4} | {'PAGO D.':<7} | {'HE':<3} | {'P.HE':<5} | {'BONO':<5}")
-            print("-" * 105)
-            print(f"{emp[0]:<4} | {emp[1]:<26} | {emp[2]:<17} | {emp[4]:<4} | {emp[5]:<7} | {emp[6]:<3} | {emp[7]:<5} | {emp[8]:<5}")
-            print("=" * 105 + "\n")
 
-def calcular_sueldos(empleados):
+def reporte_departamentos(empleados):
+    p_total=0
+    v_total=0
+    c_total=0
+    r_total=0
+    d_total=0
     for emp in empleados:
-        sueldo_total = (emp[4]*emp[5])+(emp[6]*emp[7])+emp[8]
-        emp[9] = sueldo_total
-    print("Se ha realizado el cálculo de los sueldos")
-        
-def desplegar_tabla(empleados):
-    print("\n" + "=" * 110)
-    print(f"{'ID':<4} | {'NOMBRE':<26} | {'DEPTO':<17} | {'DIAS':<4} | {'PAGO D.':<7} | {'HE':<3} | {'P.HE':<5} | {'BONO':<5} | {'SUELDO TOTAL'}")
-    print("-" * 110)
-    for emp in empleados:
-        print(f"{emp[0]:<4} | {emp[1]:<26} | {emp[2]:<17} | {emp[4]:<4} | {emp[5]:<7} | {emp[6]:<3} | {emp[7]:<5} | {emp[8]:<5} | ${emp[9]:.2f}")
-    print("=" * 110 + "\n")
-    
+        sueldo_emp=(emp[4]*emp[5])+(emp[6]*emp[7])+emp[8]
+        depto=emp[2]
+        if depto=="Produccion":
+            p_total+=sueldo_emp
+        elif depto=="Ventas":
+            v_total+=sueldo_emp
+        elif depto=="Compras":
+            c_total+=sueldo_emp
+        elif depto=="Recursos Humanos":
+            r_total+=sueldo_emp
+        elif depto=="Direccion": 
+            d_total+=sueldo_emp
+
+    print("\n==================================================")
+    print("--- SUELDOS POR DEPARTAMENTO ---")
+    print("==================================================")
+    print(f"{'Departamento':<25} {'Total':<15}")
+    print("--------------------------------------------------")
+    print(f"{'Produccion':<25} ${p_total:>14.2f}")
+    print(f"{'Ventas':<25} ${v_total:>14.2f}")
+    print(f"{'Compras':<25} ${c_total:>14.2f}")
+    print(f"{'Recursos humanos':<25} ${r_total:>14.2f}")
+    print(f"{'Direccion':<25} ${d_total:>14.2f}")
+    print("==================================================\n")
+
+
 def reporte_tipo_empleado(empleados):
     o_total=0
     e_total=0
@@ -212,6 +240,7 @@ def reporte_tipo_empleado(empleados):
     print("==================================================\n")
     return
 
+
 def reporte_nomina(empleados):
     total_nomina = sum((emp[4]*emp[5]) + (emp[6]*emp[7]) + emp[8] for emp in empleados)
     th_extras = sum(emp[6]*emp[7] for emp in empleados)
@@ -227,26 +256,6 @@ def reporte_nomina(empleados):
     f"{'Total de Bonos:':<30} ${bonos:>14.3f}" + "\n" +
     f"=" * 50 + "\n")
     return
-
-
-def menu_principal():
-    limpiar_pantalla()
-
-    print("\n" + "=" * 50 + "\n" +
-    f"{'SISTEMA DE NÓMINA - ACEROS INDUSTRIALIZADOS':^50}" +
-    f"\n" + "=" * 50 + "\n" * 2 +
-    f"{'OPERACIONES':-^50}" + "\n" +
-    f"1. Modificar información" + "\n" +
-    f"2. Calcular sueldos" + "\n" +
-    f"3. Desplegar sueldos" + "\n" + "\n" +
-
-    f"{'REPORTES ESTADÍSTICOS':-^50}" + "\n" +
-    f"4. Sueldos por Departamentos" + "\n" +
-    f"5. Sueldos por tipo de Empleado" + "\n" +
-    f"6. Sueldos, Horas Extra y Bonos" + "\n"*2 +
-    f"{'SISTEMA':-^50}" + "\n" +
-    f"7. Salir" + "\n" +
-    f"=" * 50 + "\n")
 
 
 while True:
