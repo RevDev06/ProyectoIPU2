@@ -99,23 +99,82 @@ def reporte_departamentos(empleados):
     print(f"{"Direccion":<25} | ${d_total:>14.2f}")
     print("-" * 45 + "\n")
 
-def modificar_info(empleados):
-    # Aquí irá la lógica para modificar la información de un empleado
-    return
+def buscar_empleado(empleados, numero):
+    i=0
+    while i<len(empleados):
+        if empleados[i][0]==numero:
+            return i
+        i=i+1
+    return -1
+
+def modificar(empleados):
+    desplegar_tabla(empleados)
+    num=leer_entero("Ingrese el número del trabajador a modificar: ")
+    pos=buscar_empleado(empleados, num)
+    if pos==-1:
+        print("No se encontró el empleado")
+        return
+    limpiar_pantalla()
+    while True:
+        desplegar_datos_empleado(num)
+        print("\n---Menú de modificación---")
+        print("1. Número de trabajador")
+        print("2. Nombre")
+        print("3. Departamento")
+        print("4. Tipo de empleado")
+        print("5. Días trabajados")
+        print("6. Pago por díario")
+        print("7. Horas extras")
+        print("8. Pago por hora extra")
+        print("9. Bono")
+        print("10. Regresar")
+        opcion=leer_entero("Ingrese la opción a modificar: ")
+        if opcion==10:
+            break
+        if opcion==1:
+            empleados[pos][0]=leer_entero("Ingrese el nuevo número del trabajador: ")
+        elif opcion==2:
+            empleados[pos][1]=leer_cadena("Ingrese el nuevo nombre del trabajador: ")
+        elif opcion==3:
+            empleados[pos][2]=leer_cadena("Ingrese el nuevo departamento del trabajador: ")
+        elif opcion==4:
+            empleados[pos][3]=leer_cadena("Ingrese el nuevo tipo de empleado: ")
+        elif opcion==5:
+            empleados[pos][4]=leer_entero("Ingrese los nuevos días trabajados: ")
+        elif opcion==6:
+            empleados[pos][5]=leer_flotante("Ingrese el nuevo pago por día: ")
+        elif opcion==7:
+            empleados[pos][6]=leer_entero("Ingrese las nuevas horas extras: ")
+        elif opcion==8:
+            empleados[pos][7]=leer_flotante("Ingrese el nuevo pago por hora extra: ")
+        elif opcion==9:
+            empleados[pos][8]=leer_flotante("Ingrese el nuevo bono: ")
+        else:
+            print("Opción no válida, intente de nuevo.")
+
+def desplegar_datos_empleado(num):
+    for emp in empleados:
+        if emp[0] == num:
+            print("\n" + "="*115)
+            print(f"{"ID":<5} | {"NOMBRE":<28} | {"DEPTO":<18} | {"DIAS":<5} | {"PAGO D.":<8} | {"HE":<3} | {"P.HE":<6} | {"BONO":<6}")
+            print("-" * 115)
+            print(f"{emp[0]:<5} | {emp[1]:<28} | {emp[2]:<18} | {emp[4]:<5} | {emp[5]:<8} | {emp[6]:<3} | {emp[7]:<6} | {emp[8]:<6}")
+
+    print("="*115 + "\n")
 
 def calcular_sueldos(empleados):
     for emp in empleados:
         sueldo_total = (emp[4]*emp[5])+(emp[6]*emp[7])+emp[8]
         emp[9] = sueldo_total
         
-def desplegar_sueldos(empleados):
-    print("\n" + "="*110)
+def desplegar_tabla(empleados):
+    print("\n" + "="*115)
     print(f"{"ID":<5} | {"NOMBRE":<28} | {"DEPTO":<18} | {"DIAS":<5} | {"PAGO D.":<8} | {"HE":<3} | {"P.HE":<6} | {"BONO":<6} | {"SUELDO TOTAL":<12}")
-    print("-" * 110)
+    print("-" * 115)
     for emp in empleados:
         print(f"{emp[0]:<5} | {emp[1]:<28} | {emp[2]:<18} | {emp[4]:<5} | {emp[5]:<8} | {emp[6]:<3} | {emp[7]:<6} | {emp[8]:<6} | ${emp[9]:<11.2f}")
 
-    print("="*110 + "\n")
+    print("\n" + "="*115)
     
 def reporte_tipo_empleado(empleados):
     o_total=0
@@ -181,7 +240,7 @@ while True:
     opcion = leer_entero("Selecciona una opción (1-7): ")
     if opcion == 1:
         limpiar_pantalla()
-        modificar_info(empleados)
+        modificar(empleados)
         input("Presiona culaquier tecla para continuar...")
     elif opcion == 2:
         limpiar_pantalla()
@@ -189,7 +248,7 @@ while True:
         input("Presiona culaquier tecla para continuar...")
     elif opcion == 3:
         limpiar_pantalla()
-        desplegar_sueldos(empleados)
+        desplegar_tabla(empleados)
         input("Presiona culaquier tecla para continuar...")
     elif opcion == 4:
         limpiar_pantalla()
