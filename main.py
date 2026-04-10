@@ -63,12 +63,12 @@ def leer_cadena(mensaje):
 
 
 def imprimir_tabla(empleados):
-    print("\n" + "=" * 115)
-    print(f"{'ID':<4} | {'NOMBRE':<26} | {'DEPTO':<17} | {'TIPO':<10} | {'DIAS':<4} | {'PAGO D.':<7} | {'HE':<3} | {'P.HE':<5} | {'BONO':<5}")
-    print("-" * 115)
+    print("\n" + "=" * 105)
+    print(f"{'ID':<4} | {'NOMBRE':<26} | {'DEPTO':<17} | {'DIAS':<4} | {'PAGO D.':<7} | {'HE':<3} | {'P.HE':<5} | {'BONO':<5}")
+    print("-" * 105)
     for emp in empleados:
-        print(f"{emp[0]:<4} | {emp[1]:<26} | {emp[2]:<17} | {emp[3]:<10} | {emp[4]:<4} | {emp[5]:<7} | {emp[6]:<3} | {emp[7]:<5} | {emp[8]:<5}")
-    print("=" * 115 + "\n")
+        print(f"{emp[0]:<4} | {emp[1]:<26} | {emp[2]:<17} | {emp[4]:<4} | {emp[5]:<7} | {emp[6]:<3} | {emp[7]:<5} | {emp[8]:<5}")
+    print("=" * 105 + "\n")
 
 
 def menu_principal():
@@ -92,21 +92,21 @@ def menu_principal():
 
 
 def desplegar_tabla(empleados):
-    print("\n" + "=" * 121)
-    print(f"{'ID':<4} | {'NOMBRE':<26} | {'DEPTO':<17} | {'TIPO':<10} | {'DIAS':<4} | {'PAGO D.':<7} | {'HE':<3} | {'P.HE':<5} | {'BONO':<5} | {'SUELDO TOTAL'}")
-    print("-" * 121)
+    print("\n" + "=" * 110)
+    print(f"{'ID':<4} | {'NOMBRE':<26} | {'DEPTO':<17} | {'DIAS':<4} | {'PAGO D.':<7} | {'HE':<3} | {'P.HE':<5} | {'BONO':<5} | {'SUELDO TOTAL'}")
+    print("-" * 110)
     for emp in empleados:
-        print(f"{emp[0]:<4} | {emp[1]:<26} | {emp[2]:<17} | {emp[3]:<10} | {emp[4]:<4} | {emp[5]:<7} | {emp[6]:<3} | {emp[7]:<5} | {emp[8]:<5} | ${emp[9]:.2f}")
-    print("=" * 121 + "\n")
+        print(f"{emp[0]:<4} | {emp[1]:<26} | {emp[2]:<17} | {emp[4]:<4} | {emp[5]:<7} | {emp[6]:<3} | {emp[7]:<5} | {emp[8]:<5} | ${emp[9]:.2f}")
+    print("=" * 110 + "\n")
 
 
 def desplegar_datos_empleado(num):
     for emp in empleados:
         if emp[0] == num:
             print("\n" + "=" * 105)
-            print(f"{'ID':<4} | {'NOMBRE':<26} | {'DEPTO':<17} | {'TIPO':<10} | {'DIAS':<4} | {'PAGO D.':<7} | {'HE':<3} | {'P.HE':<5} | {'BONO':<5}")
+            print(f"{'ID':<4} | {'NOMBRE':<26} | {'DEPTO':<17} | {'DIAS':<4} | {'PAGO D.':<7} | {'HE':<3} | {'P.HE':<5} | {'BONO':<5}")
             print("-" * 105)
-            print(f"{emp[0]:<4} | {emp[1]:<26} | {emp[2]:<17} | {emp[3]:<10} | {emp[4]:<4} | {emp[5]:<7} | {emp[6]:<3} | {emp[7]:<5} | {emp[8]:<5}")
+            print(f"{emp[0]:<4} | {emp[1]:<26} | {emp[2]:<17} | {emp[4]:<4} | {emp[5]:<7} | {emp[6]:<3} | {emp[7]:<5} | {emp[8]:<5}")
             print("=" * 105 + "\n")
 
 
@@ -144,20 +144,20 @@ def modificar(empleados):
     while True:
         limpiar_pantalla()
         desplegar_datos_empleado(num)
-        print(f"\n" + "=" * 50 +
-        f"\n" + f"{'MODIFICAR INFORMACIÓN':^50}" +
-        f"\n" + "=" * 50 +
-        f"\n" + "1. Número del trabajador" + 
-        f"\n" + "2. Nombre del trabajador" +  
-        f"\n" + "3. Departamento del trabajador" +
-        f"\n" + "4. Tipo de empleado" +
-        f"\n" + "5. Días trabajados" +
-        f"\n" + "6. Pago por día" +
-        f"\n" + "7. Horas extras" +
-        f"\n" + "8. Pago por hora extra" +
-        f"\n" + "9. Bono"+
-        f"\n" + "10. Regresar al menú principal" +
-        f"\n" + "=" * 50)
+        print("\n==================================================")
+        print("--- MODIFICAR INFORMACIÓN ---")
+        print("==================================================")
+        print(" 1. Número del trabajador")
+        print(" 2. Nombre del trabajador") 
+        print(" 3. Departamento del trabajador")
+        print(" 4. Tipo de empleado")
+        print(" 5. Días trabajados")
+        print(" 6. Pago por día")
+        print(" 7. Horas extras")
+        print(" 8. Pago por hora extra")
+        print(" 9. Bono")
+        print(" 10. Regresar al menú principal")
+        print("==================================================")
         opcion=leer_entero("Ingrese la opción a modificar: ")
         if opcion==10:
             break
@@ -203,17 +203,17 @@ def reporte_departamentos(empleados):
         elif depto=="Direccion": 
             d_total+=sueldo_emp
 
-    print(f"\n" + "=" * 50 +
-    f"\n" + f"{'SUELDOS POR DEPARTAMENTO':^50}" +
-    f"\n" + "=" * 50 + 
-    f"\n {'Departamento':<25} {'Total':<15}" +
-    f"\n" + "-" * 50 +
-    f"\n {'Produccion':<25} ${p_total:>14.2f}" +
-    f"\n {'Ventas':<25} ${v_total:>14.2f}" +
-    f"\n {'Compras':<25} ${c_total:>14.2f}" +
-    f"\n {'Recursos humanos':<25} ${r_total:>14.2f}" +
-    f"\n {'Direccion':<25} ${d_total:>14.2f}" +
-    f"\n" + "=" * 50 + "\n")
+    print("\n==================================================")
+    print("--- SUELDOS POR DEPARTAMENTO ---")
+    print("==================================================")
+    print(f"{'Departamento':<25} {'Total':<15}")
+    print("--------------------------------------------------")
+    print(f"{'Produccion':<25} ${p_total:>14.2f}")
+    print(f"{'Ventas':<25} ${v_total:>14.2f}")
+    print(f"{'Compras':<25} ${c_total:>14.2f}")
+    print(f"{'Recursos humanos':<25} ${r_total:>14.2f}")
+    print(f"{'Direccion':<25} ${d_total:>14.2f}")
+    print("==================================================\n")
 
 
 def reporte_tipo_empleado(empleados):
@@ -229,15 +229,15 @@ def reporte_tipo_empleado(empleados):
         elif tipo_emp=="Directivo":
             d_total+=((emp[4]*emp[5])+(emp[6]*emp[7])+emp[8])
 
-    print(f"\n" + "=" * 50 +
-    f"\n" + f"{'SUELDOS POR TIPO DE EMPLEADO':^50}" +
-    f"\n" + "=" * 50 +
-    f"\n {'Tipo de Empleado':<35} {'Total':<15}" +
-    f"\n" + "-" * 50 +
-    f"\n {'Obrero':<30} ${o_total:>14.3f}" +
-    f"\n {'Empleado':<30} ${e_total:>14.3f}" +
-    f"\n {'Directivo':<30} ${d_total:>14.3f}" +
-    f"\n" + "=" * 50 + "\n")
+    print("\n==================================================")
+    print(f"{'SUELDOS POR TIPO DE EMPLEADO':^50}")
+    print("==================================================")
+    print(f"{'Tipo de Empleado':<35} {'Total':<15}")
+    print("--------------------------------------------------")    
+    print(f"{'Obrero':<30} ${o_total:>14.3f}")
+    print(f"{'Empleado':<30} ${e_total:>14.3f}")
+    print(f"{'Directivo':<30} ${d_total:>14.3f}")
+    print("==================================================\n")
     return
 
 
@@ -264,30 +264,34 @@ while True:
     if opcion == 1:
         limpiar_pantalla()
         modificar(empleados)
-        input("Presiona cualquier tecla para continuar...")
+        input("Presiona enter para continuar...")
     elif opcion == 2:
         limpiar_pantalla()
         calcular_sueldos(empleados)
-        input("Presiona cualquier tecla para continuar...")
+        input("Presiona enter para continuar...")
     elif opcion == 3:
         limpiar_pantalla()
         desplegar_tabla(empleados)
-        input("Presiona cualquier tecla para continuar...")
+        input("Presiona enter para continuar...")
     elif opcion == 4:
         limpiar_pantalla()
         reporte_departamentos(empleados)
-        input("Presiona cualquier tecla para continuar...")
+        input("Presiona enter para continuar...")
     elif opcion == 5:
         limpiar_pantalla()
         reporte_tipo_empleado(empleados)
-        input("Presiona cualquier tecla para continuar...")
+        input("Presiona enter para continuar...")
     elif opcion == 6:
         limpiar_pantalla()
         reporte_nomina(empleados)
-        input("Presiona cualquier tecla para continuar...")
+        input("Presiona enter para continuar...")
     elif opcion == 7:
         limpiar_pantalla()
         print("\nCerrando el sistema. ¡Hasta luego!")
         time.sleep(2)
         limpiar_pantalla()
         break
+    else:
+        print("\n[!] Opción no válida. Por favor, selecciona una opción del 1 al 7.")
+        input("Presiona enter para continuar...")
+        
