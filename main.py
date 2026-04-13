@@ -144,20 +144,20 @@ def modificar(empleados):
     while True:
         limpiar_pantalla()
         desplegar_datos_empleado(num)
-        print("\n==================================================")
-        print("--- MODIFICAR INFORMACIÓN ---")
-        print("==================================================")
-        print(" 1. Número del trabajador")
-        print(" 2. Nombre del trabajador") 
-        print(" 3. Departamento del trabajador")
-        print(" 4. Tipo de empleado")
-        print(" 5. Días trabajados")
-        print(" 6. Pago por día")
-        print(" 7. Horas extras")
-        print(" 8. Pago por hora extra")
-        print(" 9. Bono")
-        print(" 10. Regresar al menú principal")
-        print("==================================================")
+        print(f"\n" + "=" * 50 +
+        f"\n" + f"{'MODIFICAR INFORMACIÓN':^50}" +
+        f"\n" + "=" * 50 +
+        f"\n" + "1. Número del trabajador" + 
+        f"\n" + "2. Nombre del trabajador" +  
+        f"\n" + "3. Departamento del trabajador" +
+        f"\n" + "4. Tipo de empleado" +
+        f"\n" + "5. Días trabajados" +
+        f"\n" + "6. Pago por día" +
+        f"\n" + "7. Horas extras" +
+        f"\n" + "8. Pago por hora extra" +
+        f"\n" + "9. Bono"+
+        f"\n" + "10. Regresar al menú principal" +
+        f"\n" + "=" * 50)
         opcion=leer_entero("Ingrese la opción a modificar: ")
         if opcion==10:
             break
@@ -203,17 +203,17 @@ def reporte_departamentos(empleados):
         elif depto=="Direccion": 
             d_total+=sueldo_emp
 
-    print("\n==================================================")
-    print("--- SUELDOS POR DEPARTAMENTO ---")
-    print("==================================================")
-    print(f"{'Departamento':<25} {'Total':<15}")
-    print("--------------------------------------------------")
-    print(f"{'Produccion':<25} ${p_total:>14.2f}")
-    print(f"{'Ventas':<25} ${v_total:>14.2f}")
-    print(f"{'Compras':<25} ${c_total:>14.2f}")
-    print(f"{'Recursos humanos':<25} ${r_total:>14.2f}")
-    print(f"{'Direccion':<25} ${d_total:>14.2f}")
-    print("==================================================\n")
+    print(f"\n" + "=" * 50 +
+    f"\n" + f"{'SUELDOS POR DEPARTAMENTO':^50}" +
+    f"\n" + "=" * 50 + 
+    f"\n {'Departamento':<25} {'Total':<15}" +
+    f"\n" + "-" * 50 +
+    f"\n {'Produccion':<25} ${p_total:>14.2f}" +
+    f"\n {'Ventas':<25} ${v_total:>14.2f}" +
+    f"\n {'Compras':<25} ${c_total:>14.2f}" +
+    f"\n {'Recursos humanos':<25} ${r_total:>14.2f}" +
+    f"\n {'Direccion':<25} ${d_total:>14.2f}" +
+    f"\n" + "=" * 50 + "\n")
 
 
 def reporte_tipo_empleado(empleados):
@@ -229,15 +229,15 @@ def reporte_tipo_empleado(empleados):
         elif tipo_emp=="Directivo":
             d_total+=((emp[4]*emp[5])+(emp[6]*emp[7])+emp[8])
 
-    print("\n==================================================")
-    print(f"{'SUELDOS POR TIPO DE EMPLEADO':^50}")
-    print("==================================================")
-    print(f"{'Tipo de Empleado':<35} {'Total':<15}")
-    print("--------------------------------------------------")    
-    print(f"{'Obrero':<30} ${o_total:>14.3f}")
-    print(f"{'Empleado':<30} ${e_total:>14.3f}")
-    print(f"{'Directivo':<30} ${d_total:>14.3f}")
-    print("==================================================\n")
+    print(f"\n" + "=" * 50 +
+    f"\n" + f"{'SUELDOS POR TIPO DE EMPLEADO':^50}" +
+    f"\n" + "=" * 50 +
+    f"\n {'Tipo de Empleado':<35} {'Total':<15}" +
+    f"\n" + "-" * 50 +
+    f"\n {'Obrero':<30} ${o_total:>14.3f}" +
+    f"\n {'Empleado':<30} ${e_total:>14.3f}" +
+    f"\n {'Directivo':<30} ${d_total:>14.3f}" +
+    f"\n" + "=" * 50 + "\n")
     return
 
 
