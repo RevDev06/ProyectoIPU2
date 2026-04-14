@@ -63,12 +63,12 @@ def leer_cadena(mensaje):
 
 
 def imprimir_tabla(empleados):
-    print("\n" + "=" * 115)
-    print(f"{'ID':<4} | {'NOMBRE':<26} | {'DEPTO':<17} | {'TIPO':<10} | {'DIAS':<4} | {'PAGO D.':<7} | {'HE':<3} | {'P.HE':<5} | {'BONO':<5}")
-    print("-" * 115)
+    print("\n" + "=" * 105)
+    print(f"{'ID':<4} | {'NOMBRE':<26} | {'DEPTO':<17} | {'DIAS':<4} | {'PAGO D.':<7} | {'HE':<3} | {'P.HE':<5} | {'BONO':<5}")
+    print("-" * 105)
     for emp in empleados:
-        print(f"{emp[0]:<4} | {emp[1]:<26} | {emp[2]:<17} | {emp[3]:<10} | {emp[4]:<4} | {emp[5]:<7} | {emp[6]:<3} | {emp[7]:<5} | {emp[8]:<5}")
-    print("=" * 115 + "\n")
+        print(f"{emp[0]:<4} | {emp[1]:<26} | {emp[2]:<17} | {emp[4]:<4} | {emp[5]:<7} | {emp[6]:<3} | {emp[7]:<5} | {emp[8]:<5}")
+    print("=" * 105 + "\n")
 
 
 def menu_principal():
@@ -92,21 +92,21 @@ def menu_principal():
 
 
 def desplegar_tabla(empleados):
-    print("\n" + "=" * 121)
-    print(f"{'ID':<4} | {'NOMBRE':<26} | {'DEPTO':<17} | {'TIPO':<10} | {'DIAS':<4} | {'PAGO D.':<7} | {'HE':<3} | {'P.HE':<5} | {'BONO':<5} | {'SUELDO TOTAL'}")
-    print("-" * 121)
+    print("\n" + "=" * 110)
+    print(f"{'ID':<4} | {'NOMBRE':<26} | {'DEPTO':<17} | {'DIAS':<4} | {'PAGO D.':<7} | {'HE':<3} | {'P.HE':<5} | {'BONO':<5} | {'SUELDO TOTAL'}")
+    print("-" * 110)
     for emp in empleados:
-        print(f"{emp[0]:<4} | {emp[1]:<26} | {emp[2]:<17} | {emp[3]:<10} | {emp[4]:<4} | {emp[5]:<7} | {emp[6]:<3} | {emp[7]:<5} | {emp[8]:<5} | ${emp[9]:.2f}")
-    print("=" * 121 + "\n")
+        print(f"{emp[0]:<4} | {emp[1]:<26} | {emp[2]:<17} | {emp[4]:<4} | {emp[5]:<7} | {emp[6]:<3} | {emp[7]:<5} | {emp[8]:<5} | ${emp[9]:.2f}")
+    print("=" * 110 + "\n")
 
 
 def desplegar_datos_empleado(num):
     for emp in empleados:
         if emp[0] == num:
             print("\n" + "=" * 105)
-            print(f"{'ID':<4} | {'NOMBRE':<26} | {'DEPTO':<17} | {'TIPO':<10} | {'DIAS':<4} | {'PAGO D.':<7} | {'HE':<3} | {'P.HE':<5} | {'BONO':<5}")
+            print(f"{'ID':<4} | {'NOMBRE':<26} | {'DEPTO':<17} | {'DIAS':<4} | {'PAGO D.':<7} | {'HE':<3} | {'P.HE':<5} | {'BONO':<5}")
             print("-" * 105)
-            print(f"{emp[0]:<4} | {emp[1]:<26} | {emp[2]:<17} | {emp[3]:<10} | {emp[4]:<4} | {emp[5]:<7} | {emp[6]:<3} | {emp[7]:<5} | {emp[8]:<5}")
+            print(f"{emp[0]:<4} | {emp[1]:<26} | {emp[2]:<17} | {emp[4]:<4} | {emp[5]:<7} | {emp[6]:<3} | {emp[7]:<5} | {emp[8]:<5}")
             print("=" * 105 + "\n")
 
 
@@ -274,30 +274,34 @@ while True:
     if opcion == 1:
         limpiar_pantalla()
         modificar(empleados)
-        input("Presiona cualquier tecla para continuar...")
+        input("Presiona enter para continuar...")
     elif opcion == 2:
         limpiar_pantalla()
         calcular_sueldos(empleados)
-        input("Presiona cualquier tecla para continuar...")
+        input("Presiona enter para continuar...")
     elif opcion == 3:
         limpiar_pantalla()
         desplegar_tabla(empleados)
-        input("Presiona cualquier tecla para continuar...")
+        input("Presiona enter para continuar...")
     elif opcion == 4:
         limpiar_pantalla()
         reporte_departamentos(empleados)
-        input("Presiona cualquier tecla para continuar...")
+        input("Presiona enter para continuar...")
     elif opcion == 5:
         limpiar_pantalla()
         reporte_tipo_empleado(empleados)
-        input("Presiona cualquier tecla para continuar...")
+        input("Presiona enter para continuar...")
     elif opcion == 6:
         limpiar_pantalla()
         reporte_nomina(empleados)
-        input("Presiona cualquier tecla para continuar...")
+        input("Presiona enter para continuar...")
     elif opcion == 7:
         limpiar_pantalla()
         print("\nCerrando el sistema. ¡Hasta luego!")
         time.sleep(2)
         limpiar_pantalla()
         break
+    else:
+        print("\n[!] Opción no válida. Por favor, selecciona una opción del 1 al 7.")
+        input("Presiona enter para continuar...")
+        
