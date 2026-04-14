@@ -162,7 +162,17 @@ def modificar(empleados):
         if opcion==10:
             break
         if opcion==1:
-            empleados[pos][0]=leer_entero("Ingrese el nuevo número del trabajador: ")
+            var=leer_entero("Ingrese el nuevo número del trabajador: ")
+            if var != num and buscar_empleado(empleados, var) != -1:
+                print("Error: El número ingresado ya existe para otro trabajador.")
+                input("Presiona cualquier tecla para intentar de nuevo...")
+                continue
+            if var == 0:
+                print("Error: El número del trabajador no puede ser 0.")
+                input("Presiona cualquier tecla para intentar de nuevo...")
+                continue
+            else:
+                empleados[pos][0] = var
         elif opcion==2:
             empleados[pos][1]=leer_cadena("Ingrese el nuevo nombre del trabajador: ")
         elif opcion==3:
