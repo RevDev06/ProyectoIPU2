@@ -173,6 +173,7 @@ def modificar(empleados):
                 continue
             else:
                 empleados[pos][0] = var
+                num = var
         elif opcion==2:
             empleados[pos][1]=leer_cadena("Ingrese el nuevo nombre del trabajador: ")
         elif opcion==3:
