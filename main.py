@@ -195,37 +195,41 @@ def modificar(empleados):
 
 
 def reporte_departamentos(empleados):
-    p_total=0
-    v_total=0
-    c_total=0
-    r_total=0
-    d_total=0
-    for emp in empleados:
-        sueldo_emp=(emp[4]*emp[5])+(emp[6]*emp[7])+emp[8]
-        depto=emp[2]
-        if depto=="Produccion":
-            p_total+=sueldo_emp
-        elif depto=="Ventas":
-            v_total+=sueldo_emp
-        elif depto=="Compras":
-            c_total+=sueldo_emp
-        elif depto=="Recursos Humanos":
-            r_total+=sueldo_emp
-        elif depto=="Direccion": 
-            d_total+=sueldo_emp
+    if empleados[0][9]>0:
+        p_total=0
+        v_total=0
+        c_total=0
+        r_total=0
+        d_total=0
+        for emp in empleados:
+            sueldo_emp=emp[9]
+            depto=emp[2]
+            if depto=="Produccion":
+                p_total+=sueldo_emp
+            elif depto=="Ventas":
+                v_total+=sueldo_emp
+            elif depto=="Compras":
+                c_total+=sueldo_emp
+            elif depto=="Recursos Humanos":
+                r_total+=sueldo_emp
+            elif depto=="Direccion": 
+                d_total+=sueldo_emp
+        print(f"\n" + "=" * 50 +
+        f"\n" + f"{'SUELDOS POR DEPARTAMENTO':^50}" +
+        f"\n" + "=" * 50 + 
+        f"\n {'Departamento':<25} {'Total':<15}" +
+        f"\n" + "-" * 50 +
+        f"\n {'Produccion':<25} ${p_total:>14.2f}" +
+        f"\n {'Ventas':<25} ${v_total:>14.2f}" +
+        f"\n {'Compras':<25} ${c_total:>14.2f}" +
+        f"\n {'Recursos humanos':<25} ${r_total:>14.2f}" +
+        f"\n {'Direccion':<25} ${d_total:>14.2f}" +
+        f"\n" + "=" * 50 + "\n")
 
-    print(f"\n" + "=" * 50 +
-    f"\n" + f"{'SUELDOS POR DEPARTAMENTO':^50}" +
-    f"\n" + "=" * 50 + 
-    f"\n {'Departamento':<25} {'Total':<15}" +
-    f"\n" + "-" * 50 +
-    f"\n {'Produccion':<25} ${p_total:>14.2f}" +
-    f"\n {'Ventas':<25} ${v_total:>14.2f}" +
-    f"\n {'Compras':<25} ${c_total:>14.2f}" +
-    f"\n {'Recursos humanos':<25} ${r_total:>14.2f}" +
-    f"\n {'Direccion':<25} ${d_total:>14.2f}" +
-    f"\n" + "=" * 50 + "\n")
+    else:
+        print("Error, todavia no se han calculado los sueldos")
 
+    
 
 def reporte_tipo_empleado(empleados):
     o_total=0
