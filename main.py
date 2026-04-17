@@ -264,7 +264,7 @@ def reporte_tipo_empleado(empleados):
 
 def reporte_nomina(empleados):
     if sum(emp[9] for emp in empleados) != 0:
-        total_nomina = sum((emp[4]*emp[5]) + (emp[6]*emp[7]) + emp[8] for emp in empleados)
+        total_nomina = sum(emp[9] for emp in empleados)
         th_extras = sum(emp[6]*emp[7] for emp in empleados)
         bonos = sum(emp[8] for emp in empleados)
         print(f"\n" + "=" * 50 + "\n" +
