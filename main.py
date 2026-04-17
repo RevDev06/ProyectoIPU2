@@ -193,27 +193,31 @@ def modificar(empleados):
         else:
             print("Opción no válida, intente de nuevo.")
 
-
 def reporte_departamentos(empleados):
-    if empleados[0][9]>0:
-        p_total=0
-        v_total=0
-        c_total=0
-        r_total=0
-        d_total=0
+    verificador=0
+    for emp in empleados:
+        verificador += emp[9]
+    
+    if verificador > 0:
+        p_total = 0
+        v_total = 0
+        c_total = 0
+        r_total = 0
+        d_total = 0
         for emp in empleados:
-            sueldo_emp=emp[9]
-            depto=emp[2]
-            if depto=="Produccion":
-                p_total+=sueldo_emp
-            elif depto=="Ventas":
-                v_total+=sueldo_emp
-            elif depto=="Compras":
-                c_total+=sueldo_emp
-            elif depto=="Recursos Humanos":
-                r_total+=sueldo_emp
-            elif depto=="Direccion": 
-                d_total+=sueldo_emp
+            sueldo_emp = emp[9]
+            depto = emp[2]
+            if depto == "Produccion":
+                p_total += sueldo_emp
+            elif depto == "Ventas":
+                v_total += sueldo_emp
+            elif depto == "Compras":
+                c_total += sueldo_emp
+            elif depto == "Recursos Humanos":
+                r_total += sueldo_emp
+            elif depto == "Direccion": 
+                d_total += sueldo_emp
+
         print(f"\n" + "=" * 50 +
         f"\n" + f"{'SUELDOS POR DEPARTAMENTO':^50}" +
         f"\n" + "=" * 50 + 
@@ -225,10 +229,10 @@ def reporte_departamentos(empleados):
         f"\n {'Recursos humanos':<25} ${r_total:>14.2f}" +
         f"\n {'Direccion':<25} ${d_total:>14.2f}" +
         f"\n" + "=" * 50 + "\n")
-
     else:
         print("Error, todavia no se han calculado los sueldos")
 
+    
 
 def reporte_tipo_empleado(empleados):
     if sum(emp[9] for emp in empleados) != 0:
