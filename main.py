@@ -43,7 +43,8 @@ class Lavadora(Electrodomestico, Gama):
         self.consumo_agua = consumo_agua
         self.ciclos_de_lavado = ciclos_de_lavado
     def __str__(self):
-        return super().__str__() + f", Capacidad de Carga: {self.capacidad} kg, Consumo de Agua: {self.consumo_agua} L, Ciclos de Lavado: {self.ciclos_de_lavado}\nTipo Gama: {self.tipo_gama()}"
+        return super().__str__() + f", Capacidad de Carga: {self.capacidad} kg, Consumo de Agua: {self.consumo_agua} L,"
+        f"Ciclos de Lavado: {self.ciclos_de_lavado}\nTipo Gama: {self.tipo_gama()}"
 
     def tipo_gama(self):
         if self.capacidad <= 10 and self.ciclos_de_lavado <= 3:
@@ -56,21 +57,18 @@ class Lavadora(Electrodomestico, Gama):
 def mostrar_datos(lista):
     if not lista:
         raise InventarioVacio("Error: El inventario está vacío. Use la opción 1.")
-    print("\n" + "="*30)
     print(" INVENTARIO ACTUAL ")
     for obj in lista:
         print(obj)
 
 inventario_global = []
-
+#Menu
 while True:
     print("\n--- TODO PARA EL HOGAR S.A. ---")
     print("1. Instanciar (Cargar Datos)")
     print("2. Desplegar (Ver Inventario)")
     print("3. Salir")
-    
     opc = input("Seleccione: ")
-
     if opc == "1":
         try:
             p = float(input("Precio de la lavadora: "))
@@ -80,7 +78,7 @@ while True:
             print(">> Objeto creado correctamente.")
         except ValueError:
             print("Error: El precio debe ser un número.")
-        except IDvacio as e:  # ERROR CORREGIDO: 'v' minúscula para coincidir con tu clase
+        except IDvacio as e: 
             print(e.mensaje)
         except PrecioInvalido as e:
             print(e.mensaje)
