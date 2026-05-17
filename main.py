@@ -3,13 +3,9 @@ import os
 import time
 
 def limpiar_pantalla():
-    # Sistema robusto de limpieza para evitar que la terminal se congele
-    if os.name == 'nt':
-        os.system("cls")
-    else:
-        os.system("clear")
+    os.system("cls")
 
-#Excepciones
+
 class IDvacio(Exception):
     def __init__(self, mensaje):
         self.mensaje = mensaje
@@ -26,7 +22,6 @@ class InventarioVacio(Exception):
         super().__init__(self.mensaje)
 
 
-# Interface
 class Gama(ABC):
     @abstractmethod
     def tipo_gama(self):
