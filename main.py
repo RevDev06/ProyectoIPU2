@@ -3,7 +3,11 @@ import os
 import time
 
 def limpiar_pantalla():
-    os.system("cls")
+    # Sistema robusto de limpieza para evitar que la terminal se congele
+    if os.name == 'nt':
+        os.system("cls")
+    else:
+        os.system("clear")
 
 #Excepciones
 class IDvacio(Exception):
@@ -99,13 +103,14 @@ class Microondas(Electrodomestico, Gama):
 
 def mostrar_datos(lista):
     if not lista:
-        raise InventarioVacio("Error: El inventario está vacío. Use la opción 1.")
+        raise InventarioVacio("Error: El inventario está vacío. No hay datos para mostrar.")
     print(" INVENTARIO ACTUAL ")
     for obj in lista:
         print(obj)
 
 def cargar_datos():
     while True:
+        limpiar_pantalla()
         print("Eliga un electrodoméstico para cargar datos:")
         print("1. Lavadora")
         print("2. Refrigerador")
@@ -118,7 +123,10 @@ def cargar_datos():
             try:
                 id_lav = input("ID de la lavadora: ")
                 p = float(input("Precio de la lavadora: "))
-                lav = Lavadora(id_lav, "Mabe", "L-20", p, 12, 10, 5)
+                capacidad_carga = int(input("Capacidad de carga (en kg): "))
+                consumo_agua = int(input("Consumo de agua (en litros): "))
+                ciclos_de_lavado = int(input("Número de ciclos de lavado: "))
+                lav = Lavadora(id_lav, "Mabe", "L-20", p, capacidad_carga, consumo_agua, ciclos_de_lavado)
                 inventario_global.append(lav)
                 print(">> Objeto creado correctamente.")
             except ValueError:
@@ -129,7 +137,7 @@ def cargar_datos():
                 print(e.mensaje)
             except TypeError as e:
                 print(f"Error técnico en los argumentos: {e}")
-            limpiar_pantalla()
+            input("Presione Enter para continuar...")
         elif tipo == "2":
             try:
                 id_refri = input("ID del refrigerador: ")
@@ -149,7 +157,7 @@ def cargar_datos():
                 print(e.mensaje)
             except TypeError as e:
                 print(f"Error técnico en los argumentos: {e}")
-            limpiar_pantalla()
+            input("Presione Enter para continuar...")     
         elif tipo == "3":
             try:
                 id_micro = input("ID del microondas: ")
@@ -169,7 +177,7 @@ def cargar_datos():
                 print(e.mensaje)
             except TypeError as e:
                 print(f"Error técnico en los argumentos: {e}")
-            limpiar_pantalla()
+            input("Presione Enter para continuar...")
         elif tipo == "4":
             print("Volviendo al menú principal...")
             break
