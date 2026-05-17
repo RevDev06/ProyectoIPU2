@@ -5,8 +5,6 @@ import time
 def limpiar_pantalla():
     os.system("cls")
 
-inventario_global = []
-
 #Excepciones
 class IDvacio(Exception):
     def __init__(self, mensaje):
@@ -70,7 +68,7 @@ class Refrigerador(Electrodomestico, Gama):
         self.pies_capacidad = pies_capacidad
 
     def __str__(self):
-        return super().__str__() + f", Número de Puertas: {self.no_puertas}, Metros Cúbicos: {self.metros_cubicos}, Pies de Capacidad: {self.pies_capacidad}"
+        return super().__str__() + f", Número de Puertas: {self.no_puertas}, Metros Cúbicos: {self.metros_cubicos}, Pies de Capacidad: {self.pies_capacidad}, Tipo Gama: {self.tipo_gama()}"
     
     def tipo_gama(self):
         if self.no_puertas == 1 and self.metros_cubicos <= 10:
@@ -81,14 +79,14 @@ class Refrigerador(Electrodomestico, Gama):
             return "Gama Alta"
 
 class Microondas(Electrodomestico, Gama):
-    def __init__(self, id, marca, modelo, precio, potencia, capacidad_interior, funciones):
+    def __init__(self, id, marca, modelo, precio, potencia, consumo_energia, medidas):
         super().__init__(id, marca, modelo, precio)
         self.potencia = potencia
-        self.capacidad_interior = capacidad_interior
-        self.funciones = funciones
+        self.consumo_energia = consumo_energia
+        self.medidas = medidas
 
     def __str__(self):
-        return super().__str__() + f", Potencia: {self.potencia} W, Capacidad Interior: {self.capacidad_interior} L, Funciones: {', '.join(self.funciones)}\nTipo Gama: {self.tipo_gama()}"
+        return super().__str__() + f", Potencia: {self.potencia} W, Consumo de Energía: {self.consumo_energia} kWh, Medidas: {self.medidas}, Tipo Gama: {self.tipo_gama()}"
 
     def tipo_gama(self):
         if self.potencia < 1000:
@@ -105,9 +103,8 @@ def mostrar_datos(lista):
     print(" INVENTARIO ACTUAL ")
     for obj in lista:
         print(obj)
-        
+
 def cargar_datos():
-    print("Cargando datos...")
     while True:
         print("Eliga un electrodoméstico para cargar datos:")
         print("1. Lavadora")
@@ -119,8 +116,8 @@ def cargar_datos():
         
         if tipo == "1":
             try:
-                p = float(input("Precio de la lavadora: "))
                 id_lav = input("ID de la lavadora: ")
+                p = float(input("Precio de la lavadora: "))
                 lav = Lavadora(id_lav, "Mabe", "L-20", p, 12, 10, 5)
                 inventario_global.append(lav)
                 print(">> Objeto creado correctamente.")
@@ -132,15 +129,18 @@ def cargar_datos():
                 print(e.mensaje)
             except TypeError as e:
                 print(f"Error técnico en los argumentos: {e}")
-        
+            limpiar_pantalla()
         elif tipo == "2":
             try:
-                p = float(input("Precio del refrigerador: "))
                 id_refri = input("ID del refrigerador: ")
-                refri = Refrigerador(id_refri, "Mabe", "R-20", p, 2, 12, 15)
+                model = input("Modelo del refrigerador: ")
+                p = float(input("Precio del refrigerador: "))
+                no_puertas = int(input("Número de puertas: "))
+                metros_cubicos = int(input("Metros cúbicos: "))
+                pies_capacidad = int(input("Pies de capaicidad: "))
+                refri = Refrigerador(id_refri, "Mabe", model, p, no_puertas, metros_cubicos, pies_capacidad)
                 inventario_global.append(refri)
                 print(">> Objeto creado correctamente.")
-                
             except ValueError:
                 print("Error: El precio debe ser un número.")
             except IDvacio as e: 
@@ -149,15 +149,18 @@ def cargar_datos():
                 print(e.mensaje)
             except TypeError as e:
                 print(f"Error técnico en los argumentos: {e}")
-        
+            limpiar_pantalla()
         elif tipo == "3":
             try:
-                p = float(input("Precio del microondas: "))
                 id_micro = input("ID del microondas: ")
-                micro = Microondas(id_micro, "Mabe", "M-20", p, 1200, 25, ["Descongelar", "Cocinar"])
+                model = input("Modelo del microondas: ")
+                p = float(input("Precio del microondas: "))
+                potencia = int(input("Potencia del microondas (en W): "))
+                consumo = int(input("Consumo de energía del microondas (en kWh): "))
+                medidas = input("Medidas del microondas (en litros): ")
+                micro = Microondas(id_micro, "Mabe", model, p, potencia, consumo, medidas)
                 inventario_global.append(micro)
                 print(">> Objeto creado correctamente.")
-                
             except ValueError:
                 print("Error: El precio debe ser un número.")
             except IDvacio as e: 
@@ -166,12 +169,14 @@ def cargar_datos():
                 print(e.mensaje)
             except TypeError as e:
                 print(f"Error técnico en los argumentos: {e}")
-        
+            limpiar_pantalla()
         elif tipo == "4":
             print("Volviendo al menú principal...")
             break
         else: 
             print("Opción no válida. Intente de nuevo.")
+
+inventario_global = []
 
 #Menu
 while True:
@@ -181,16 +186,18 @@ while True:
     print("2. Desplegar (Ver Inventario)")
     print("3. Salir")
     opc = input("Seleccione: ")
-    limpiar_pantalla()
     
     if opc == "1":
+        limpiar_pantalla()
         cargar_datos()
     
     elif opc == "2":
+        limpiar_pantalla()
         try:
             mostrar_datos(inventario_global)
         except InventarioVacio as e:
             print(e.mensaje)
+        input("Presione Enter para continuar...")
 
     elif opc == "3":
         limpiar_pantalla()
