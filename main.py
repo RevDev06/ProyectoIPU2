@@ -1,18 +1,40 @@
 from abc import ABC, abstractmethod
 import os
 import time
+import re
 
 def limpiar_pantalla():
-    os.system("cls")
-
-
+    os.system("cls" if os.name == "nt" else "clear")
 
 def leer_cadena(mensaje):
+    patron = r"^[a-zA-Z0-9\s\-_áéíóúÁÉÍÓÚñÑ]+$"
+    
     while True:
         valor = input(mensaje).strip()
-        if valor:
-            return valor
-        print("Error: El campo no puede estar vacío. Intente de nuevo.")
+        if not valor:
+            print("Error: El campo no puede estar vacío. Intente de nuevo.")
+            continue
+        
+        if not re.match(patron, valor):
+            print("Error: Caracteres inválidos. Solo se permiten letras, números, espacios, guiones (-) y guiones bajos (_).")
+            continue
+            
+        return valor
+
+def leer_medidas(mensaje):
+    patron = r"^\d+(\.\d+)?[xX]\d+(\.\d+)?[xX]\d+(\.\d+)?$"
+    
+    while True:
+        valor = input(mensaje).strip()
+        if not valor:
+            print("Error: El campo no puede estar vacío.")
+            continue
+            
+        if not re.match(patron, valor):
+            print("Error: Formato inválido. Debe ser estrictamente en formato NxNxN (ej. 80x90x80).")
+            continue
+            
+        return valor.lower()
 
 def leer_float(mensaje):
     while True:
@@ -207,7 +229,7 @@ def cargar_datos():
                 p = leer_float("Precio del microondas: ")
                 potencia = leer_entero("Potencia del microondas (en W): ")
                 consumo = leer_float("Consumo de energía del microondas (en kWh): ")
-                medidas = leer_cadena("Medidas del microondas (ej. 45x30x25 cm): ")
+                medidas = leer_medidas("Medidas del microondas (ej. 45x30x25): ")
                 
                 micro = Microondas(id_micro, "Mabe", model,
                                    p, potencia, consumo, medidas)
