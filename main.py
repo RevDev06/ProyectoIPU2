@@ -4,7 +4,7 @@ import time
 import re
 
 def limpiar_pantalla():
-    os.system("cls" if os.name == "nt" else "clear")
+    os.system("cls")
 
 def leer_cadena(mensaje):
     patron = r"^[a-zA-Z0-9\s\-_áéíóúÁÉÍÓÚñÑ]+$"
