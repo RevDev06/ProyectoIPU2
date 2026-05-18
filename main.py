@@ -116,7 +116,7 @@ class Refrigerador(Electrodomestico, Gama):
         self.pies_capacidad = pies_capacidad
 
     def __str__(self):
-        return super().__str__() + f", Número de Puertas: {self.no_puertas}, Metros Cúbicos: {self.metros_cubicos}, Pies de Capacidad: {self.pies_capacidad}, Tipo Gama: {self.tipo_gama()}"
+        return super().__str__() + f", Número de Puertas: {self.no_puertas}, Metros Cúbicos: {self.metros_cubicos}, Pies de Capacidad: {self.pies_capacidad}, \n Tipo Gama: {self.tipo_gama()}"
 
     def tipo_gama(self):
         if self.no_puertas == 1 and self.metros_cubicos <= 10:
@@ -135,7 +135,7 @@ class Microondas(Electrodomestico, Gama):
         self.medidas = medidas
 
     def __str__(self):
-        return super().__str__() + f", Potencia: {self.potencia} W, Consumo de Energía: {self.consumo_energia} kWh, Medidas: {self.medidas}, Tipo Gama: {self.tipo_gama()}"
+        return super().__str__() + f", Potencia: {self.potencia} W, Consumo de Energía: {self.consumo_energia} kWh, Medidas: {self.medidas}, \n Tipo Gama: {self.tipo_gama()}"
 
     def tipo_gama(self):
         if self.potencia < 1000:
@@ -206,7 +206,7 @@ def cargar_datos():
                 model = leer_cadena("Modelo del microondas: ")
                 p = leer_float("Precio del microondas: ")
                 potencia = leer_entero("Potencia del microondas (en W): ")
-                consumo = leer_float("Consumo de energía del microondas (en kWh): ")
+                consumo = leer_entero("Consumo de energía del microondas (en kWh): ")
                 medidas = leer_cadena("Medidas del microondas (ej. 45x30x25 cm): ")
                 
                 micro = Microondas(id_micro, "Mabe", model,
