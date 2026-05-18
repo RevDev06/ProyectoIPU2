@@ -3,6 +3,7 @@ import os
 import time
 import re
 
+# Funciones de validación y limpieza de pantalla
 def limpiar_pantalla():
     os.system("cls")
 
@@ -87,13 +88,13 @@ class InventarioVacio(Exception):
         self.mensaje = mensaje
         super().__init__(self.mensaje)
 
-
+#Interface Gama
 class Gama(ABC):
     @abstractmethod
     def tipo_gama(self):
         pass
 
-
+#Clases de Electrodomésticos
 class Electrodomestico:
     def __init__(self, id, marca, modelo, precio):
         if not id or id.strip() == "":
@@ -110,7 +111,7 @@ class Electrodomestico:
     def __str__(self):
         return f"ID: {self.id}, Marca: {self.marca}, Modelo: {self.modelo}, Precio: ${self.precio:.2f}"
 
-
+#Clase Lavadora
 class Lavadora(Electrodomestico, Gama):
     def __init__(self, id, marca, modelo, precio, capacidad_carga, consumo_agua, ciclos_de_lavado):
         super().__init__(id, marca, modelo, precio)
@@ -129,7 +130,7 @@ class Lavadora(Electrodomestico, Gama):
         else:
             return "Gama Alta"
 
-
+#Clase Refrigerador
 class Refrigerador(Electrodomestico, Gama):
     def __init__(self, id, marca, modelo, precio, no_puertas, metros_cubicos, pies_capacidad):
         super().__init__(id, marca, modelo, precio)
@@ -148,7 +149,7 @@ class Refrigerador(Electrodomestico, Gama):
         else:
             return "Gama Alta"
 
-
+#Clase Microondas
 class Microondas(Electrodomestico, Gama):
     def __init__(self, id, marca, modelo, precio, potencia, consumo_energia, medidas):
         super().__init__(id, marca, modelo, precio)
@@ -167,7 +168,7 @@ class Microondas(Electrodomestico, Gama):
         else:
             return "Gama Alta"
 
-
+#Funciones para cargar y mostrar datos
 def mostrar_datos(lista):
     if not lista:
         raise InventarioVacio(
@@ -249,6 +250,7 @@ def cargar_datos():
 
 inventario_global = []
 
+#Programa Principal
 while True:
     try:
         limpiar_pantalla()
