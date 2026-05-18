@@ -228,7 +228,7 @@ def cargar_datos():
                 model = leer_cadena("Modelo del microondas: ")
                 p = leer_float("Precio del microondas: ")
                 potencia = leer_entero("Potencia del microondas (en W): ")
-                consumo = leer_float("Consumo de energía del microondas (en kWh): ")
+                consumo = leer_entero("Consumo de energía del microondas (en kWh): ")
                 medidas = leer_medidas("Medidas del microondas (ej. 45x30x25): ")
                 
                 micro = Microondas(id_micro, "Mabe", model,
