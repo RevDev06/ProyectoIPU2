@@ -193,12 +193,13 @@ def cargar_datos():
         if tipo == "1":
             try:
                 id_lav = leer_cadena("ID de la lavadora: ")
+                model = leer_cadena("Modelo de la lavadora: ")
                 p = leer_float("Precio de la lavadora: ")
                 capacidad_carga = leer_entero("Capacidad de carga (en kg): ")
                 consumo_agua = leer_entero("Consumo de agua (en litros): ")
                 ciclos_de_lavado = leer_entero("Número de ciclos de lavado: ")
                 
-                lav = Lavadora(id_lav, "Mabe", "L-20", p,
+                lav = Lavadora(id_lav, "Mabe", model, p,
                                capacidad_carga, consumo_agua, ciclos_de_lavado)
                 inventario_global.append(lav)
                 print(">> Objeto creado correctamente.")
