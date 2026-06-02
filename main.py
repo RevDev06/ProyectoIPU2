@@ -139,22 +139,6 @@ def leer_entero(mensaje, permitir_cero=False):
 
 
 # Excepciones personalizadas para el control seguro de errores
-class IDvacio(Exception):
-    """Lanzada cuando el identificador está vacío o contiene solo espacios."""
-
-    def __init__(self, mensaje):
-        self.mensaje = mensaje
-        super().__init__(self.mensaje)
-
-
-class PrecioInvalido(Exception):
-    """Lanzada cuando el precio asignado es menor o igual a cero."""
-
-    def __init__(self, mensaje):
-        self.mensaje = mensaje
-        super().__init__(self.mensaje)
-
-
 class InventarioVacio(Exception):
     """Lanzada al intentar mostrar un inventario sin elementos registrados."""
 
@@ -177,13 +161,6 @@ class Electrodomestico:
     """Clase base con las propiedades comunes de un electrodoméstico."""
 
     def __init__(self, id, marca, modelo, precio):
-        if not id or id.strip() == "":
-            raise IDvacio("Error: El ID no puede estar vacio")
-        if precio <= 0:
-            raise PrecioInvalido(
-                "Error: El precio es invalido, no puede ser negativo o cero"
-            )
-
         self.id = id
         self.marca = marca
         self.modelo = modelo
@@ -314,74 +291,42 @@ def cargar_datos():
         limpiar_pantalla()
 
         if tipo == "1":
-            try:
-                id_lav = leer_cadena("ID de la lavadora: ")
-                marca = leer_cadena("Marca de la lavadora: ")
-                model = leer_cadena("Modelo de la lavadora: ")
-                p = leer_float("Precio de la lavadora: ")
-                capacidad_carga = leer_entero("Capacidad de carga (en kg): ")
-                consumo_agua = leer_entero("Consumo de agua (en litros): ")
-                ciclos_de_lavado = leer_entero("Número de ciclos de lavado: ")
-
-                lav = Lavadora(
-                    id_lav,
-                    marca,
-                    model,
-                    p,
-                    capacidad_carga,
-                    consumo_agua,
-                    ciclos_de_lavado,
-                )
-                inventario_global.append(lav)
-                print(">> Objeto creado correctamente.")
-            except (IDvacio, PrecioInvalido, TypeError) as e:
-                print(f"Error técnico al instanciar: {e}")
+            id_lav = leer_cadena("ID de la lavadora: ")
+            marca = leer_cadena("Marca de la lavadora: ")
+            model = leer_cadena("Modelo de la lavadora: ")
+            p = leer_float("Precio de la lavadora: ")
+            capacidad_carga = leer_entero("Capacidad de carga (en kg): ")
+            consumo_agua = leer_entero("Consumo de agua (en litros): ")
+            ciclos_de_lavado = leer_entero("Número de ciclos de lavado: ")
+            lav = Lavadora(id_lav, marca, model, p, capacidad_carga, consumo_agua, ciclos_de_lavado,)
+            inventario_global.append(lav)
+            print("\n>> Objeto creado correctamente.")
             input("Presione Enter para continuar...")
 
         elif tipo == "2":
-            try:
-                id_refri = leer_cadena("ID del refrigerador: ")
-                marca = leer_cadena("Marca del refrigerador: ")
-                model = leer_cadena("Modelo del refrigerador: ")
-                p = leer_float("Precio del refrigerador: ")
-                no_puertas = leer_entero("Número de puertas: ")
-                metros_cubicos = leer_entero("Metros cúbicos: ")
-                pies_capacidad = leer_entero("Pies de capacidad: ")
-
-                refri = Refrigerador(
-                    id_refri,
-                    marca,
-                    model,
-                    p,
-                    no_puertas,
-                    metros_cubicos,
-                    pies_capacidad,
-                )
-                inventario_global.append(refri)
-                print(">> Objeto creado correctamente.")
-            except (IDvacio, PrecioInvalido, TypeError) as e:
-                print(f"Error técnico al instanciar: {e}")
+            id_refri = leer_cadena("ID del refrigerador: ")
+            marca = leer_cadena("Marca del refrigerador: ")
+            model = leer_cadena("Modelo del refrigerador: ")
+            p = leer_float("Precio del refrigerador: ")
+            no_puertas = leer_entero("Número de puertas: ")
+            metros_cubicos = leer_entero("Metros cúbicos: ")
+            pies_capacidad = leer_entero("Pies de capacidad: ")
+            refri = Refrigerador(id_refri, marca ,model, p, no_puertas, metros_cubicos, pies_capacidad)
+            inventario_global.append(refri)
+            print("\n>> Objeto creado correctamente.")
             input("Presione Enter para continuar...")
 
         elif tipo == "3":
-            try:
-                id_micro = leer_cadena("ID del microondas: ")
-                marca = leer_cadena("Marca del microondas: ")
-                model = leer_cadena("Modelo del microondas: ")
-                p = leer_float("Precio del microondas: ")
-                potencia = leer_entero("Potencia del microondas (en W): ")
-                consumo = leer_entero(
-                    "Consumo de energía del microondas (en kWh): "
-                )
-                medidas = leer_medidas("Medidas del microondas (ej. 45x30x25): ")
-
-                micro = Microondas(
-                    id_micro, marca, model, p, potencia, consumo, medidas
-                )
-                inventario_global.append(micro)
-                print(">> Objeto creado correctamente.")
-            except (IDvacio, PrecioInvalido, TypeError) as e:
-                print(f"Error técnico al instanciar: {e}")
+            id_micro = leer_cadena("ID del microondas: ")
+            marca = leer_cadena("Marca del microondas: ")
+            model = leer_cadena("Modelo del microondas: ")
+            p = leer_float("Precio del microondas: ")
+            potencia = leer_entero("Potencia del microondas (en W): ")
+            consumo = leer_entero("Consumo de energía del microondas (en kWh): ")
+            medidas = leer_medidas("Medidas del microondas (ej. 45x30x25): ")
+            micro = Microondas(id_micro, marca, model, p, potencia, consumo, medidas)
+            inventario_global.append(micro)
+            print("\n>> Objeto creado correctamente.")
             input("Presione Enter para continuar...")
 
         elif tipo == "4":
@@ -432,4 +377,7 @@ while True:
         input("Presione Enter para continuar...")
     except EOFError:
         print("\nError de fin de archivo o interrupción de teclado.")
+        input("Presione Enter para continuar...")
+    except Exception:
+        print("\nOcurrió un error inesperado. Intente de nuevo.")
         input("Presione Enter para continuar...")
