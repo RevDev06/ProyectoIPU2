@@ -316,6 +316,7 @@ def cargar_datos():
         if tipo == "1":
             try:
                 id_lav = leer_cadena("ID de la lavadora: ")
+                marca = leer_cadena("Marca de la lavadora: ")
                 model = leer_cadena("Modelo de la lavadora: ")
                 p = leer_float("Precio de la lavadora: ")
                 capacidad_carga = leer_entero("Capacidad de carga (en kg): ")
@@ -324,7 +325,7 @@ def cargar_datos():
 
                 lav = Lavadora(
                     id_lav,
-                    "Mabe",
+                    marca,
                     model,
                     p,
                     capacidad_carga,
@@ -340,6 +341,7 @@ def cargar_datos():
         elif tipo == "2":
             try:
                 id_refri = leer_cadena("ID del refrigerador: ")
+                marca = leer_cadena("Marca del refrigerador: ")
                 model = leer_cadena("Modelo del refrigerador: ")
                 p = leer_float("Precio del refrigerador: ")
                 no_puertas = leer_entero("Número de puertas: ")
@@ -348,7 +350,7 @@ def cargar_datos():
 
                 refri = Refrigerador(
                     id_refri,
-                    "Mabe",
+                    marca,
                     model,
                     p,
                     no_puertas,
@@ -364,6 +366,7 @@ def cargar_datos():
         elif tipo == "3":
             try:
                 id_micro = leer_cadena("ID del microondas: ")
+                marca = leer_cadena("Marca del microondas: ")
                 model = leer_cadena("Modelo del microondas: ")
                 p = leer_float("Precio del microondas: ")
                 potencia = leer_entero("Potencia del microondas (en W): ")
@@ -373,7 +376,7 @@ def cargar_datos():
                 medidas = leer_medidas("Medidas del microondas (ej. 45x30x25): ")
 
                 micro = Microondas(
-                    id_micro, "Mabe", model, p, potencia, consumo, medidas
+                    id_micro, marca, model, p, potencia, consumo, medidas
                 )
                 inventario_global.append(micro)
                 print(">> Objeto creado correctamente.")
