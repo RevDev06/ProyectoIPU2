@@ -107,12 +107,11 @@ def leer_float(mensaje):
             )
 
 
-def leer_entero(mensaje, permitir_cero=False):
+def leer_entero(mensaje):
     """Pide un número entero y revisa que no sea negativo.
 
     Parámetros:
         mensaje (str): El texto que se le muestra al usuario para pedirle el número.
-        permitir_cero (bool): Si es True, acepta el número 0. Si es False, exige que sea mayor a 0.
 
     Retorna:
         int: El número entero que escribió el usuario.
@@ -124,11 +123,8 @@ def leer_entero(mensaje, permitir_cero=False):
             continue
         try:
             numero = int(valor)
-            if numero < 0:
-                print("Error: El valor no puede ser negativo.")
-                continue
-            if not permitir_cero and numero == 0:
-                print("Error: El valor debe ser mayor a 0.")
+            if numero <= 0:
+                print("Error: El valor no puede ser menor o igual a 0.")
                 continue
             return numero
         except ValueError:
@@ -356,43 +352,45 @@ def cargar_datos():
 inventario_global = []
 
 # Menú principal que se repite todo el tiempo mientras el programa esté abierto
-while True:
-    try:
-        limpiar_pantalla()
-        print("\n--- TODO PARA EL HOGAR S.A. ---")
-        print("1. Instanciar (Cargar Datos)")
-        print("2. Desplegar (Ver Inventario)")
-        print("3. Salir")
-        opc = input("Seleccione: ")
+if __name__ == "__main__":
 
-        if opc == "1":
-            cargar_datos()
-
-        elif opc == "2":
+    while True:
+        try:
             limpiar_pantalla()
-            try:
-                mostrar_datos(inventario_global)
-            except InventarioVacio as e:
-                print(e.mensaje)
+            print("\n--- TODO PARA EL HOGAR S.A. ---")
+            print("1. Instanciar (Cargar Datos)")
+            print("2. Desplegar (Ver Inventario)")
+            print("3. Salir")
+            opc = input("Seleccione: ")
+    
+            if opc == "1":
+                cargar_datos()
+    
+            elif opc == "2":
+                limpiar_pantalla()
+                try:
+                    mostrar_datos(inventario_global)
+                except InventarioVacio as e:
+                    print(e.mensaje)
+                input("Presione Enter para continuar...")
+    
+            elif opc == "3":
+                limpiar_pantalla()
+                print("Saliendo...")
+                time.sleep(2)
+                limpiar_pantalla()
+                break
+            
+            else:
+                print("Opción no válida. Intente de nuevo.")
+                input("Presione Enter para continuar...")
+    
+        except KeyboardInterrupt:
+            print("\nInterrupción por el usuario.")
             input("Presione Enter para continuar...")
-
-        elif opc == "3":
-            limpiar_pantalla()
-            print("Saliendo...")
-            time.sleep(2)
-            limpiar_pantalla()
-            break
-
-        else:
-            print("Opción no válida. Intente de nuevo.")
+        except EOFError:
+            print("\nError de fin de archivo o interrupción de teclado.")
             input("Presione Enter para continuar...")
-
-    except KeyboardInterrupt:
-        print("\nInterrupción por el usuario.")
-        input("Presione Enter para continuar...")
-    except EOFError:
-        print("\nError de fin de archivo o interrupción de teclado.")
-        input("Presione Enter para continuar...")
-    except Exception:
-        print("\nOcurrió un error inesperado. Intente de nuevo.")
-        input("Presione Enter para continuar...")
+        except Exception:
+            print("\nOcurrió un error inesperado. Intente de nuevo.")
+            input("Presione Enter para continuar...")
