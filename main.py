@@ -107,7 +107,7 @@ def leer_float(mensaje):
             )
 
 
-def leer_entero(mensaje, permitir_cero=False):
+def leer_entero(mensaje):
     """Pide un número entero y revisa que no sea negativo.
 
     Parámetros:
@@ -124,11 +124,8 @@ def leer_entero(mensaje, permitir_cero=False):
             continue
         try:
             numero = int(valor)
-            if numero < 0:
-                print("Error: El valor no puede ser negativo.")
-                continue
-            if not permitir_cero and numero == 0:
-                print("Error: El valor debe ser mayor a 0.")
+            if numero <= 0:
+                print("Error: El valor no puede ser menor o igual a 0.")
                 continue
             return numero
         except ValueError:
