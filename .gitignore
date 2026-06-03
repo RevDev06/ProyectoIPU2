@@ -3,15 +3,14 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Caché de Pytest y cobertura
 .pytest_cache/
 .coverage
 htmlcov/
 
-# Entornos virtuales (por si llegas a usar uno en el futuro)
+
 venv/
 env/
 .venv/
 
-# Configuraciones locales del editor (VS Code)
+
 .vscode/
